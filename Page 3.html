@@ -1,0 +1,99 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Your Letter💙</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="Page 3.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <!-- Floating hearts background -->
+    <div class="floating-hearts" id="hearts-container"></div>
+
+    <!-- Intro Screen -->
+    <div class="container" id="introScreen">
+      <h1>Hi again <span class="hearts">💙</span></h1>
+      <p>Go on and take a look inside..🤔a</p>
+      <button id="showLetter">Click To Open</button>
+    </div>
+
+    <!-- Love Letter Screen -->
+    <div class="love-letter" id="loveLetterScreen" style="display:none;">
+      <div class="envlope-wrapper">
+        <div id="envelope" class="close">
+          <div class="front flap"></div>
+          <div class="front pocket"></div>
+          <div class="letter">
+            <p class="words line1"><strong>To: Ange</strong></p>
+            <p class="words line2">Dear Ange, <br> Happy 20th birthday I created this website six months ago, and if somehow we’re not on best of terms by then, I’d still want you to have this. 
+              It’s been a while since I last made a website, so I hope that by the time you see this, I’ve managed to improve it a bit. You're pretty much all I think about all the time. 
+              <br><br>I truly hope you have a wonderful day. Wishing you good health always. Don’t forget to treat yourself, drink water, and stay hydrated. 
+              You deserve nothing less than happiness today. 💙
+            </p>
+            <p class="words line3">Yours truly, Kin.</p>
+          </div>
+
+          <div class="heartss">
+            <div class="heart a1"></div>
+            <div class="heart a2"></div>
+            <div class="heart a3"></div>
+          </div>
+        </div>
+      </div>
+      <div class="reset">
+        <button id="open">Open</button>
+        <button id="reset">Close</button>
+        <a href="Page 1.html" class="back-home">Back to Start</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      Developed By: Kin &nbsp; | &nbsp; Made with 
+      <svg class="heartBlink" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z" fill="#033175"></path>
+      </svg>
+    </div>
+
+    <script src="Page 3.js"></script>
+    <script>
+      // Switch from intro to love letter
+      document.getElementById("showLetter").addEventListener("click", function () {
+        document.getElementById("introScreen").style.display = "none";
+        document.getElementById("loveLetterScreen").style.display = "block";
+      });
+
+      // Floating Ice Bears 
+      const heartsContainer = document.getElementById('hearts-container');
+      setInterval(() => {
+        const bear = document.createElement('img');
+        bear.className = 'icebear-particle';
+        bear.src = "icebear.png";   // ✅ path to your Ice Bear image
+        bear.style.left = Math.random() * 100 + 'vw';
+        bear.style.animationDuration = (4 + Math.random() * 3) + 's';
+        heartsContainer.appendChild(bear);
+
+        setTimeout(() => {
+          bear.remove();
+        }, 10000); // remove after animation
+      }, 500);
+
+      // Floating hearts
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'heart-particle';
+        heart.innerHTML = '💙';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+        heartsContainer.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 10000);
+      }, 700);
+    </script>
+  </body>
+  </html>

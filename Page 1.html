@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Happy Birthday, Ange💙</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
+    <link rel="stylesheet" href="./Page 1.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  </head>
+  <body>
+    <div class="candle-count-display">
+  HAPPY BIRTHDAY, ANGE 
+  <img src="icebear.png" alt="Ice Bear" class="icebear-icon">
+</div>
+<div class="floating-hearts" id="hearts-container"></div>
+
+    <!-- Cake -->
+    <div class="cake">
+      <div id="candleCount" style="display:none;"></div>
+      <div class="plate"></div>
+      <div class="layer layer-bottom"></div>
+      <div class="layer layer-middle"></div>
+      <div class="layer layer-top"></div>
+      <div class="icing"></div>
+      <div class="drip drip1"></div>
+      <div class="drip drip2"></div>
+      <div class="drip drip3"></div>
+    </div>
+
+    <!-- To Do Section -->
+    <div class="todo-section">
+      <h3>📝 To do:</h3>
+      <ol>
+        <li>Click on the cake to add '20' candles 🕯️</li>
+        <li>Blow into your microphone to blow them out 💨</li>
+        <li>Click the 'Click to Proceed' button 💙</li>
+      </ol>
+    </div>
+
+    <!-- Proceed Button + Hint -->
+    <div style="margin-top: 40px; text-align:center;">
+      <a href="Page 2.html" class="proceed-btn disabled">CLICK TO PROCEED</a>
+      <p id="proceedHint" style="color:#fff; text-shadow:1px 1px 3px rgba(0,0,0,0.6); font-size:16px; margin-top:10px;">
+        
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      Developed By: Kin &nbsp; | &nbsp; Made with 
+      <svg class="heart" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="">
+        <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z" fill="#033175"></path>
+      </svg>
+    </div>
+
+    <!-- Scripts -->
+<script src="Page 1.js"></script>
+<script>
+  document.querySelectorAll("a.proceed-btn").forEach(btn => {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      document.body.classList.add("fade-out");
+      setTimeout(() => {
+        window.location = this.href;
+      }, 800);
+    });
+  });
+  
+</script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2"></script>
+<script>
+  // Floating Ice Bears 
+const heartsContainer = document.getElementById('hearts-container');
+setInterval(() => {
+  const bear = document.createElement('img');
+  bear.className = 'icebear-particle';
+  bear.src = "icebear.png";   // ✅ path to your Ice Bear image
+  bear.style.left = Math.random() * 100 + 'vw';
+  bear.style.animationDuration = (4 + Math.random() * 3) + 's';
+  heartsContainer.appendChild(bear);
+
+  setTimeout(() => {
+    bear.remove();
+  }, 10000); // remove after animation
+}, 300);
+
+// Floating hearts
+const heartsContainer2 = document.getElementById('hearts-container');
+setInterval(() => {
+  const heart = document.createElement('div');
+  heart.className = 'heart-particle';
+  heart.innerHTML = '💙';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+  heartsContainer.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 10000);
+}, 500);
+</script>
+
+  </body>
+</html>

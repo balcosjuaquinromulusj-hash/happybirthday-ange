@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Album💙</title>
+  <link rel="stylesheet" href="Page 2.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+</head>
+<body>
+  <!-- Floating Ice Bears + Hearts -->
+  <div class="floating-hearts" id="hearts-container"></div>
+
+  <div id="app">
+    <!-- Intro Box -->
+    <div v-if="showIntro" class="intro-box">
+      <h2>Hi, Ange💙</h2>
+      <p>I hope you enjoyed this virtual gift so far, and here is another one. </p>
+      <div class="intro-buttons">
+        <a href="Page 1.html" class="btn back-btn">Back</a>
+        <button @click="startAlbum" class="btn continue-btn">Continue</button>
+      </div>
+    </div>
+
+    <!-- Album Section -->
+    <div v-else class="container">
+      <div class="album" :class="{'album--open': isOpenedTop}">
+        <!-- Album cover -->
+        <div
+          class="album__paper"
+          :style="{zIndex: isOpenedTop ? 0 : items.length + 1 }"
+          :class="{'open': isOpenedTop}"
+          @click="topOpen(isOpenedTop)">
+          <div class="album__page front">
+  <div class="cover-content">
+    <div class="album__top-title">Album</div>
+    <p class="txt-meowish">Memories</p>
+    <img src="cover-photo.png" alt="Cover" class="cover-photo" />
+    <div class="cat-mark"></div>
+  </div>
+</div>
+
+          <div class="album__page back"></div>
+        </div>
+
+        <!-- Album pages -->
+        <div
+          class="album__paper"
+          v-for="(page, idx) in items"
+          :key="idx + 1"
+          :style="{zIndex: page.isOpen ? idx + 1 : items.length + 1 - (idx + 1) }"
+          :class="{'open': page.isOpen}"
+          @click="open(idx, page.isOpen)">
+       <div class="album__page front">
+  <div class="content">
+    <div class="content__title">{{ page.title }}</div>
+
+    <!-- If only img1 exists (last page) → show 1 big centered image -->
+    <div v-if="!page.img2 && !page.img3" class="content__img-single">
+      <img :src="page.img1" />
+    </div>
+
+    <!-- Otherwise → normal 3-image layout -->
+    <template v-else>
+      <div class="content__img1"><img :src="page.img1" /></div>
+      <div class="content__img2"><img :src="page.img2" /></div>
+      <div class="content__img3"><img :src="page.img3" /></div>
+    </template>
+  </div>
+</div>
+<div class="album__page back"></div>
+</div>
+
+<div class="album__back"></div>
+<div class="album__bottom"></div>
+<div class="album__shadow"></div>
+</div>
+
+
+      <!-- Final Continue Button -->
+      <div class="final-continue">
+        <a 
+          :class="{'disabled': !canContinue}" 
+          :href="canContinue ? 'Page 3.html' : '#'" 
+          class="btn final-btn">
+          Continue
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+    <div class="footer">
+      Developed By: Kin &nbsp; | &nbsp; Made with 
+      <svg class="heart" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="">
+        <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z" fill="#033175"></path>
+      </svg>
+    </div>
+
+  <script src="Page 2.js"></script>
+  <script>
+  // Floating Ice Bears 
+const heartsContainer = document.getElementById('hearts-container');
+setInterval(() => {
+  const bear = document.createElement('img');
+  bear.className = 'icebear-particle';
+  bear.src = "icebear.png";   // ✅ path to your Ice Bear image
+  bear.style.left = Math.random() * 100 + 'vw';
+  bear.style.animationDuration = (4 + Math.random() * 3) + 's';
+  heartsContainer.appendChild(bear);
+
+  setTimeout(() => {
+    bear.remove();
+  }, 10000); // remove after animation
+}, 300);
+
+// Floating hearts
+const heartsContainer2 = document.getElementById('hearts-container');
+setInterval(() => {
+  const heart = document.createElement('div');
+  heart.className = 'heart-particle';
+  heart.innerHTML = '💙';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+  heartsContainer.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 10000);
+}, 500);
+</script>
+</body>
+</html>
