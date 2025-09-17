@@ -1,69 +1,58 @@
+/* -------- General Reset & Background -------- */
 body {
   margin: 0;
   background: linear-gradient(135deg, #8ebfff 0%, #fff8da 100%);
   min-height: 100vh;
   overflow-x: hidden;
-}
-
-body {
   transition: opacity 0.8s ease;
+  font-family: 'Arial', sans-serif;
 }
 
-body.fade-out {
-  opacity: 0;
-}
+body.fade-out { opacity: 0; }
 
-/* Floating icebear*/
+/* -------- Floating Icebear & Hearts -------- */
 .icebear-particle {
   position: absolute;
-  width: 80px;   /* adjust size */
+  width: 60px;
+  max-width: 15vw;
   height: auto;
   opacity: 0;
   animation: float-up 6s linear forwards;
 }
 
-.heart-particle { 
-  position: absolute; 
-  font-size: 22px; 
-  color: #3769d4; 
-  opacity: 0; 
-  animation: float-up 4s linear forwards; 
+.heart-particle {
+  position: absolute;
+  font-size: 22px;
+  color: #3769d4;
+  opacity: 0;
+  animation: float-up 4s linear forwards;
 }
 
 @keyframes float-up {
-  0% {
-    transform: translateY(100vh) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-120px) rotate(360deg);
-    opacity: 0;
-  }
+  0%   { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-120px) rotate(360deg); opacity: 0; }
 }
 
+/* -------- Candle Counter -------- */
 .candle-count-display {
   text-align: center;
-  margin-top: 150px;
-  margin-bottom: 20px;
-  font-family: 'Arial', sans-serif;
-  font-size: 30px;
+  margin: 100px auto 20px auto;
+  font-size: 24px;
   font-weight: bold;
   color: #f0e4d0;
   background-color: #033175;
-  padding: 20px;
+  padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
   border: 2px solid #fff8da;
 }
 
 .icebear-icon {
-  width: 40px;     /* adjust size */
+  width: 30px;
   height: auto;
-  vertical-align: middle; /* keeps it aligned with text */
-  margin-left: 10px;      /* space between text and bear */
+  vertical-align: middle;
+  margin-left: 10px;
 }
 
 .candle-count-display span {
@@ -71,208 +60,75 @@ body.fade-out {
   color: #AD030F;
 }
 
+/* -------- Cake -------- */
 .cake {
-  position: absolute;
-  width: 250px;
-  height: 200px;
-  top: 50%;
-  left: 50%;
-  margin-top: -70px;
-  margin-left: -125px;
+  position: relative;
+  width: 60vw;
+  max-width: 250px;
+  margin: 40px auto;
 }
 
 .plate {
-  width: 270px;
-  height: 110px;
-  position: absolute;
-  bottom: -10px;
-  left: -10px;
+  width: 100%;
+  height: auto;
   background-color: #ccc;
   border-radius: 50%;
-  box-shadow: 0 2px 0 #b3b3b3, 0 4px 0 #b3b3b3, 0 5px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 0 #b3b3b3, 0 4px 0 #b3b3b3, 0 5px 40px rgba(0,0,0,0.5);
 }
 
-.todo-section {
-  position: fixed;
-  left: 40px;
-  top: 30%;
-  background: #8ebfff;
-  border: 2px solid #fff8da;
-  border-radius: 12px;
-  padding: 60px;
-  width: 450px;
-  font-family: 'Arial', sans-serif;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-}
-
-.todo-section h3 {
-  margin-top: 0;
-  color: #fff;
-  font-size: 24px;
-  text-align: center;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-}
-
-.todo-section ol {
-  counter-reset: item;
-  padding-left: 0;
-  list-style: none;
-}
-
-.todo-section li {
-  margin-bottom: 12px;
-  font-size: 19px;
-  display: flex;
-  align-items: center;
-  color: #fff;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-}
-
-.todo-section li::before {
-  content: counter(item);
-  counter-increment: item;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #033175;
-  color: white;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 10px;
-  font-weight: bold;
-}
-
-.proceed-btn {
-  position: fixed;
-  top: 70%;
-  left: 42.5%;
-  display: inline-block;
-  background: #8ebfff;
-  color: white;
-  padding: 15px 35px;
-  border-radius: 20px;
-  text-decoration: none;
-  font-family: 'Helvetica';
-  font-weight: bold;
-  font-size: 22px;
-  transition: background 0.3s;
-}
-
-.proceed-btn:hover {
-  background: #033175;
-}
-
-/* Disabled state for proceed button */
-.proceed-btn.disabled {
-  pointer-events: none;
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.cake > * {
-  position: absolute;
-}
-
+/* Cake layers */
 .layer {
   position: absolute;
-  display: block;
-  width: 250px;
+  width: 100%;
   height: 100px;
   border-radius: 50%;
   background-color: #033175;
-  box-shadow: 0 2px 0px #f0e4d0, 0 4px 0px #033175, 0 6px 0px #f0e4d0, 0 8px 0px #033175, 0 10px 0px #033175, 0 12px 0px #f0e4d0, 0 14px 0px #f0e4d0, 0 16px 0px #f0e4d0, 0 18px 0px #f0e4d0, 0 20px 0px #f0e4d0, 0 22px 0px #f0e4d0, 0 24px 0px #f0e4d0, 0 26px 0px #f0e4d0, 0 28px 0px #033175, 0 30px 0px #033175;
 }
 
-.layer-top {
-  top: 0px;
-}
-
-.layer-middle {
-  top: 33px;
-}
-
-.layer-bottom {
-  top: 66px;
-}
+.layer-top { top: 0; }
+.layer-middle { top: 33px; }
+.layer-bottom { top: 66px; }
 
 .icing {
   top: 2px;
-  left: 5px;
-  background-color: #f0e4d0;
-  width: 240px;
+  left: 5%;
+  width: 90%;
   height: 90px;
   border-radius: 50%;
+  background-color: #f0e4d0;
 }
 
-.icing:before {
-  content: "";
-  position: absolute;
-  top: 4px;
-  right: 5px;
-  bottom: 6px;
-  left: 5px;
-  background-color: #f4ebdc;
-  box-shadow: 0 0 4px #f6efe3, 0 0 4px #f6efe3, 0 0 4px #f6efe3;
-  border-radius: 50%;
-  z-index: 1;
-}
-
+/* -------- Drips -------- */
 .drip {
-  display: block;
-  width: 50px;
-  height: 60px;
+  position: absolute;
+  background-color: #f0e4d0;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
-  background-color: #f0e4d0; 
 }
 
-.drip1 {
-  top: 53px;
-  left: 5px;
-  transform: skewY(15deg);
-  height: 48px;
-  width: 40px;
-}
+.drip1 { top: 53px; left: 5%; width: 40px; height: 48px; transform: skewY(15deg); }
+.drip2 { top: 69px; right: 5%; width: 50px; height: 60px; transform: skewY(-15deg); }
+.drip3 { top: 54px; left: 40%; width: 80px; height: 60px; border-radius: 0 0 40px 40px; }
 
-.drip2 {
-  top: 69px;
-  left: 181px;
-  transform: skewY(-15deg);
-}
-
-.drip3 {
-  top: 54px;
-  left: 90px;
-  width: 80px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-}
-
+/* -------- Candle -------- */
 .candle {
   background-color: #020e7b;
   width: 12px;
   height: 35px;
   border-radius: 6px/3px;
+  position: absolute;
   top: -20px;
   left: 50%;
-  margin-left: -8px;
-  z-index: 10;
+  transform: translateX(-50%);
 }
 
 .candle:before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
   width: 12px;
   height: 6px;
   border-radius: 50%;
   background-color: #0352ad;
-}
-
-.candle.out .flame {
-  display: none;
 }
 
 .flame {
@@ -280,39 +136,87 @@ body.fade-out {
   background-color: orange;
   width: 10px;
   height: 25px;
-  border-radius: 8px 8px 8px 8px/20px 20px 8px 8px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   top: -34px;
   left: 50%;
-  margin-left: -7.5px;
-  z-index: 10;
-  box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
-  transform-origin: 50% 90%;
+  transform: translateX(-50%);
   animation: flicker 1s ease-in-out alternate infinite;
+  box-shadow: 0 0 10px rgba(255,165,0,0.5), 0 0 20px rgba(255,165,0,0.5);
 }
 
 @keyframes flicker {
-  0% {
-    transform: skewX(5deg);
-    box-shadow: 0 0 10px rgba(255, 165, 0, 0.2), 0 0 20px rgba(255, 165, 0, 0.2), 0 0 60px rgba(255, 165, 0, 0.2), 0 0 80px rgba(255, 165, 0, 0.2);
-  }
-  25% {
-    transform: skewX(-5deg);
-    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
-  }
-  50% {
-    transform: skewX(10deg);
-    box-shadow: 0 0 10px rgba(255, 165, 0, 0.3), 0 0 20px rgba(255, 165, 0, 0.3), 0 0 60px rgba(255, 165, 0, 0.3), 0 0 80px rgba(255, 165, 0, 0.3);
-  }
-  75% {
-    transform: skewX(-10deg);
-    box-shadow: 0 0 10px rgba(255, 165, 0, 0.4), 0 0 20px rgba(255, 165, 0, 0.4), 0 0 60px rgba(255, 165, 0, 0.4), 0 0 80px rgba(255, 165, 0, 0.4);
-  }
-  100% {
-    transform: skewX(5deg);
-    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
-  }
+  0%,100% { transform: translateX(-50%) skewX(5deg); }
+  50% { transform: translateX(-50%) skewX(-5deg); }
 }
 
+/* -------- To-Do Section -------- */
+.todo-section {
+  position: relative;
+  margin: 40px auto;
+  background: #8ebfff;
+  border: 2px solid #fff8da;
+  border-radius: 12px;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  text-align: left;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.todo-section h3 {
+  margin-top: 0;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+}
+
+.todo-section li {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #fff;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.todo-section li::before {
+  content: counter(item);
+  counter-increment: item;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #033175;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+/* -------- Proceed Button -------- */
+.proceed-btn {
+  display: block;
+  margin: 30px auto;
+  background: #8ebfff;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  transition: background 0.3s;
+  text-align: center;
+}
+
+.proceed-btn:hover { background: #033175; }
+
+.proceed-btn.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* -------- Footer -------- */
 .footer {
   position: fixed;
   left: 0;
@@ -336,7 +240,25 @@ body.fade-out {
 }
 
 @keyframes blink {
-  0% { opacity: 0; }
+  0%,100% { opacity: 0; }
   50% { opacity: 1; }
-  100% { opacity: 0; }
+}
+
+/* -------- Responsive -------- */
+@media (max-width: 768px) {
+  .candle-count-display {
+    font-size: 18px;
+    padding: 10px;
+  }
+  .todo-section {
+    font-size: 14px;
+    padding: 15px;
+  }
+  .todo-section h3 {
+    font-size: 18px;
+  }
+  .proceed-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
 }
